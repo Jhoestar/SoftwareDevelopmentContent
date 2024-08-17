@@ -1,0 +1,39 @@
+.container{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 35px 1fr 100px;
+    min-height: 100vh;
+    grid-template-areas:
+        "header header header"
+        "sidebar content content"
+        "footer footer footer";
+}
+
+
+header{
+    background: #09f;
+    grid-area: header;
+}
+
+aside{
+    background: yellow;
+    grid-area: sidebar;
+}
+
+main{
+    background: red;
+    grid-area: content;
+}
+
+footer{
+    background: grey;
+    grid-area: footer;
+}
+
+
+
+
+
+body{
+    margin: 0;
+}
