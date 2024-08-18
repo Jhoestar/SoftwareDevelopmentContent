@@ -174,8 +174,52 @@ Para luego manejarlos dentro del contenedor de la siguiente forma
                 "footer . footer";
 
 
+# Alinear elementos
+
+podemos hacer uso del justify-items que nos ayuda a cambiar el valor de como se tiene que alinear un elemento en linea dentro de la cuadricula (lo podemos hacer tanto en el contenedor como en los hijos)
+
+    justify-items: normal;    -> por defecto
+    justify-items: stretch;   -> estirar funciona muy similar al normal
+    justify-items: center;    -> centra cada elemento de la columna
+    justify-items: start;     -> lo deja todo al inicio de cada cuadricula de grid
+    justify-items: end;       -> al final
+
+    para cada hijo usar:
+
+    justify-self
+
+Tambien podemos hacer la alineacion en bloque
+
+    align-items: start;     -> mueve todo hacia arriba de la cuadricula
+    align-items: end;       -> alinea todo abajo
+    align-items: center;    -> alinea todo al centro
+
+    para cada hijo usar:
+
+    align-self
+
+tambien podemos hacer uso de justify-content para cambiar la posicion de la cuadricula entera
+
+        justify-content: center;
+        justify-content: end;
+        justify-content: space-around;  -> distribuye espacios iguales a cada lado de los elementos
+        justify-content: space-between;
+
+tambien para manejar la cuadricula de manera vertical
+
+        align-content: center;
+        align-content: end;
+        align-content: space-around;
+        align-content: space-between;
 
 
+# entonces al usar items es para cada elemento y al usar content es para toda la cuadricula
 
+ejm final
 
-        
+    para dar el espacio que quieras puedes hacer simplemente un 
+
+    justify-content: center;
+    align-content: center;
+    gap: 4px;     -> y manejamos el espaciado con los pixeles segun el espaciado que queramos
+    
