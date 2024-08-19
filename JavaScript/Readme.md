@@ -145,3 +145,7 @@ instanceOf puede ser utilizado para saber si es una instancia de un objeto
     podemos convertir de dates -> number
                         dates -> string
                         number -> boolean
+
+
+
+Es necesario colocar type = "module" en el HTML si es que se esta usando un modulo en el archivo js
