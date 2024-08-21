@@ -149,3 +149,11 @@ instanceOf puede ser utilizado para saber si es una instancia de un objeto
 
 
 Es necesario colocar type = "module" en el HTML si es que se esta usando un modulo en el archivo js
+
+
+
+##### Tambien podemos hacer uso de otro tipo de metodo en JS
+
+    document.querySelectorAll('a')
+
+    -> seleccionamos todos los elementos del DOM que sean de tipo a
