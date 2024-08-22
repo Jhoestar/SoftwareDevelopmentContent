@@ -157,3 +157,74 @@ Es necesario colocar type = "module" en el HTML si es que se esta usando un modu
     document.querySelectorAll('a')
 
     -> seleccionamos todos los elementos del DOM que sean de tipo a
+
+
+    enlace.addEventListener('click',()=>{
+
+    })
+
+    -> de esta forma podemos hacer que al enlace(en el ejemplo un elemento de tipo a), se el a;ada un evento, primeramente se le pasa el tipo en este caso click, como segundo paramentro se le pasa la funcion que realizara
+
+
+    enlace.classList.remove('active')
+
+    -> de esta forma podemos remover la caracteristica que se implemento con el active, en el ejemplo se usa mara cambiar de pantallas en el menu del sistema
+
+    this.classList.add('active')
+
+    -> de esta forma le damos la caracteristica active siempre y cuando se tenga el elemento active en el css
+
+    let contenido = obtenerContenido(this.textContent)
+
+
+
+# REGEX
+
+    Tambien podemos hacer el uso de search en js
+
+        let texto = "Hola, como estas";
+        let indice = texto.search(/como/);
+
+        console.log(indiece); //imprime el 7 que es el indice en el que se encuentra como
+
+    podemos usar modificadores en este metodo:
+
+        (/como/i) -> ignora mayusculas y minusculas
+        (/como/g) -> buscar en todo el texto pasado
+        (/como/m) -> busqueda multilinea 
+        (/como/s) -> permite usar . al buscar
+
+
+    Utilizando test para verificar si existe un elemento
+
+        let texto = "utilizando el metodo test"
+        let pattern = /metodo/i
+        let resultado = pattern.test(texto);
+        console.log(resultado)             -> devuelve true
+
+    O usando un rango de numeros
+
+        let texto = "utilizando el metodo test1"
+        let pattern = /[0-9]/
+        let resultado = pattern.test(texto);
+        console.log(resultado)             -> devuelve true
+    
+    Se puede usar el exec
+
+        let texto = "utilizando el metodo test"
+        let pattern = /metodo/
+        let resultado = pattern.exec(texto);
+        console.log(resultado)             
+
+            Devuelve un Array
+
+            -> busca ignorando mayusculas y minusculas
+            -> devuelve el index:33
+            -> devuelve el input: "utilizando el metodo test"
+            -> devuelve groups: undefined
+
+    Ejemplo de uso:
+
+        Para controlar la entrada de un correo se puede usar:
+
+            let pattern = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i

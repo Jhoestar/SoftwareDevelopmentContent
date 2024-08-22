@@ -19,9 +19,10 @@ li a{
     padding: 8px 16px;
     display: block;
     text-decoration: none;
+    cursor: pointer;
 }
 
-li a:active{
+li a.active{
     background-color: #04AA6D;
     color: white;
 }
@@ -36,4 +37,12 @@ li:hover:not(.active){
     padding: 1px 16px;
     height: 100vh;
     background: #ffffff;
+}
+
+#precio{
+    text-align: center;
+    display: block;
+    border: solid black;
+    margin: 0 80px;
+    padding: 9px 0;
 }
