@@ -228,3 +228,7 @@ Es necesario colocar type = "module" en el HTML si es que se esta usando un modu
         Para controlar la entrada de un correo se puede usar:
 
             let pattern = /^[-\w.%+]{1,64}@(?:[A-Z0-9-]{1,63}\.){1,125}[A-Z]{2,63}$/i
+
+# El try-catch funciona en js solo si se trabaja con cuestiones sincronas de otra manera es posible usar las promesas para mantener una secuencialidad
+
+    De la misma forma no es recomendable usar muchas promesas y controlarlas como una piramide sino que es mejor usar Async & Await que igualmente ayuda en el uso de las promesas
