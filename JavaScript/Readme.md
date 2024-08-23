@@ -232,3 +232,47 @@ Es necesario colocar type = "module" en el HTML si es que se esta usando un modu
 # El try-catch funciona en js solo si se trabaja con cuestiones sincronas de otra manera es posible usar las promesas para mantener una secuencialidad
 
     De la misma forma no es recomendable usar muchas promesas y controlarlas como una piramide sino que es mejor usar Async & Await que igualmente ayuda en el uso de las promesas
+
+
+
+uso de APIs
+
+    fetch('url.com')
+        .then(response => response.json())
+        .then(json => console.(json))
+
+
+JSON forma de representar objetos, se utiliza para intercambiar informacion entre servidor y cliente
+
+RESOURCES
+    
+    modo de uso:
+    /nombre
+
+        4 METODOS DE PEDIDO
+            -GET obtener informacion
+            -POST subir informacion
+            -PUT editar informacion
+            -PATCH editar una parte de la informacion
+            -DELETE eliminar informacion
+
+        STATUS CODES
+            200 -> todo bien
+            400 -> errores nuestros
+            500 -> errores en la base de datos
+
+ROUTES:
+
+    /comments?portid = 1
+
+        le pasamos el nombre y el comentario que es solo del posteo numero 1 
+
+
+En js debemos tratar de hacer todo de manera dinamica por lo que hacer un fetch y pasarle la url directa es un tipo de hardcodeo que debemos de evitar
+
+    let url = 'https://algo.com'
+    let query = '/comments?postid=5'
+
+    fetch(`${url}/${query}`)
+    .then(response => response.json())
+    .then(json => console.log(json))
