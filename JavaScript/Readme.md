@@ -273,6 +273,86 @@ En js debemos tratar de hacer todo de manera dinamica por lo que hacer un fetch 
     let url = 'https://algo.com'
     let query = '/comments?postid=5'
 
-    fetch(`${url}/${query}`)
+    fetch(`${url}/${query}`)  -> otra forma de ver el fetch es como un get
     .then(response => response.json())
     .then(json => console.log(json))
+
+
+    si en el query usamos el
+    posts/1 -> trae un solo objeto 
+
+El body es un tipo de objeto al cual se le puede mandar el formato JSON para que haga un post en la base de datos o en la api
+
+
+EJEMPLO POST
+
+
+    let url = 'https://algo.com'
+    let query = '/comments?postid=5'
+    let requestBody = {
+        title: 'Ricardo comenta sobre tu foto',
+        body: 'Que bella foto prima, se te extra;a!',
+        userId: 1,
+    }
+
+    fetch(`${url}/posts`, {
+        //creamos un objeto para darle el formato en el cual se mandara nuestro posteo
+        method: 'POST'  //en este caso es POST puede ser cualquier tipo
+                //cores medida de seguridad al enviar y trabajar con la BD
+        headers: {
+            'content-type': 'aplication/json'   //mandaremos un JSON
+        }
+        body: JSON.stringify(requestBody)
+    })
+    .then(response => response.json())
+    .then(json => console.log(json))
+
+
+EJEMPLO PUT
+
+    let posteo = 5: //modificamos el posteo 5
+
+    let requestBody2 = {
+        id: 3,          //modificamos el comentario 3
+        title: 'Ricardo comenta sobre tu foto',
+        body: 'Que bella foto prima, se te extra;a!',
+        userId: 5,
+    }
+
+    fetch(`${url}/posts/${posteo}`, {
+        method: 'POST'  
+        headers: {
+            'content-type': 'aplication/json'   //mandaremos un JSON
+        }
+        body: JSON.stringify(requestBody2)
+    })
+    .then(response => response.json())
+    .then(json => console.log(json))
+
+EJEMPLO PATCH
+
+    let post = 10: //modificamos el posteo 10
+    let modificacion = {
+        title : 'Este titulo no ha sido modificado'
+    }
+
+    fetch(`${url}/posts/${posteo}`, {
+        method: 'PATCH'  
+        headers: {
+            'content-type': 'aplication/json'; 'charset=UTF-8' //mandaremos un JSON
+        }
+        body: JSON.stringify(modificacion)
+    })
+    .then(response => response.json())
+    .then(json => console.log(json))
+
+
+EJEMPLO DELETE
+    let elementoAEliminar= 7
+    fetch(`${url}/posts/${elementoAEliminar}`, {
+        method: 'DELETE'  
+        headers: {
+            'content-type': 'aplication/json'; 'charset=UTF-8' //mandaremos un JSON
+        }
+        body: JSON.stringify(modificacion)
+    })
