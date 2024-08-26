@@ -356,3 +356,22 @@ EJEMPLO DELETE
         }
         body: JSON.stringify(modificacion)
     })
+
+# Creando elementos de HTML en JS
+
+    const ciudadTitulo = document.createElement('h2');
+
+luego podemos asignarlo a otro elemento de HTML
+
+    description = response.weather[0].description;
+
+            -> description lo podemos obtener de una API o tambien darle directamente con lo que queramos.
+    
+ciudadTitulo.textContent = description;
+
+    De igual forma podemos meter este nuevo elemento a otro
+
+
+        divDatosClima.appendChild(ciudadTitulo)
+        divDatosClima.appendChild(tempInfo)
+        divDatosClima.appendChild(descriptionInfo)
