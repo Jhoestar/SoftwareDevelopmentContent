@@ -1,9 +1,11 @@
-let key = '53302469c52f744b34ef99d64620681b';
-let difKelvin = 273.15;
+const key = '53302469c52f744b34ef99d64620681b';
+const difKelvin = 273.15;
 
-let url = `https://api.openweathermap.org/data/2.5/weather`;
+const url = `https://api.openweathermap.org/data/2.5/weather`;
 
-let button = document.getElementById('botonBusqueda').addEventListener('click', () => {
+const button = document.getElementById('botonBusqueda');
+
+button.addEventListener('click', () => {
     const city = document.getElementById('ciudadEntrada').value;
     if(city){
         fetchDatosClima(city);

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <form id="formulario">
+        <h2>Formulario de Registro</h2>
+        <div class="formGroup">
+            <label for="name">Nombre:</label>
+            <input type="text" name="nombre" id="name">
+            <div class="error-message" id="nameError"></div>
+        </div>
+        <div class="formGroup">
+            <label for="email">Correo Electronico:</label>
+            <input type="email" name="correo" id="email">
+            <div class="error-message" id="emailError"></div>
+        </div>
+        <div class="formGroup">
+            <label for="contraseña">Contraseña:</label>
+            <input type="password" id="password" name="contraseña">
+            <div class="error-message" id="passwordError"></div>
+        </div>
+        <button type="submit">Enviar</button>
+    </form>
+    
+    <script src="script.js"></script>
+</body>
+</html>
