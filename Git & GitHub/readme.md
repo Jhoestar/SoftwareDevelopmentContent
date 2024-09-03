@@ -1,28 +1,19 @@
 # GIT
 
 
+* Para inicializar un repositorio
+```hs
+git init
+```
 
-Para inicializar un repositorio
+* Para cambiar la rama prinicipal:
+```hs
+git congfig --global init.defaultBranch main    -> se le da el nombre de la rama inicial
+```
 
-	git init
+* Para eliminar un repositorio solamente necesitamos eliminar la carpeta que se crea con git init
 
-
-Para cambiar la rama prinicipal:
-
-	git congfig --global init.defaultBranch main    -> se le da el nombre de la rama inicial
-
-
-
-
-para eliminar un repositorio solamente necesitamos eliminar la carpeta que se crea con git init
-
-
-
-
-
-
-
-
+```hs
 DIRECTORIO DE TRABAJO -> LA CARPETA DEL PROYECTO
 	MODIFICADA (MODIFIED)
 AREA DE PREPARACION -> CONJUNTO DE ARCHIVOS Y CAMBIOS (PROXIMO COMMIT)
@@ -30,120 +21,115 @@ AREA DE PREPARACION -> CONJUNTO DE ARCHIVOS Y CAMBIOS (PROXIMO COMMIT)
 COMMIT -> CAMBIOS EN EL REPOSITORIO
 	.GIT -> ES UN DIRECTORIO QUE CONTIENE LOS METADATOS DE LAS VERSIONES DEL PROYECTO
 	CONFIRMADA (COMMITTED)
+```
+
+* Para saber el estado del repositorio:
+```hs
+git status
+```
 
 
+* Para comenzar a rastrear un archivo y a;adirlo al area de preparacion
+```hs
+git add index.css
+git add .      -> añade todos los archivos 
+```
 
 
+* Para eliminar un archivo del area de preparacion
+```hs
+git rm --cached index.css
+```
 
-para saber el estado del repositorio:
+`UN COMMIT ES UN REGISTRO DEL ESTADO DE UN PROYECTO EN UN MOMENTO ESPECIFICO`
 
-	git status
+* Creando un commit
+```hs
+git commit -m "Agregar archivo css"      -> agregando un mensaje
+git commit                               -> se nos permite escribir un txt para el mensaje del commit
+```
 
-
-para comenzar a rastrear un archivo y a;adirlo al area de preparacion
-
-	
-	git add index.css
-	git add .      -> a;ade todos los archivos 
-
-
-
-para eliminar un archivo del area de preparacion
-
-	git rm --cached index.css
-
-
-	
-
-UN COMMIT ES UN REGISTRO DEL ESTADO DE UN PROYECTO EN UN MOMENTO ESPECIFICO
-
-
-creando un commit
-
-	git commit -m "Agregar archivo css"      -> agregando un mensaje
-	git commit                               -> se nos permite escribir un txt para el mensaje del commit
-	
-	
-
-mostrando el historial de commits realizados
-
-	git log
-	git log --oneline        -> muestra todos los detalles solo en 1 linea
-	git log -p 		 -> muestra el commit y las diferencias
+* Mostrando el historial de commits realizados
+```hs
+git log
+git log --oneline        -> muestra todos los detalles solo en 1 linea
+git log -p 		 -> muestra el commit y las diferencias
+```
 	
 
-para asociar un editor de texto
+* Para asociar un editor de texto
+```hs
+git config --global core.editor "code --wait"      -> para VScode
+git config --global core.editor "path de lo que se quiera usar"
+```
 
-	git config --global core.editor "code --wait"      -> para VScode
-	git config --global core.editor "path de lo que se quiera usar"
 
-
-modificar un mensaje commit
-
-	git commit --ammend     -> no hacerlo en un proyecto con varias personas
+* Modificar un mensaje commit
+```hs
+git commit --ammend     -> no hacerlo en un proyecto con varias personas
+```
 	
-revertir un commit
+* Revertir un commit
+```hs
+git reset --soft HEAD~1  -> se retrocede en 1 los commits que se realizaron
+	--soft       mantiene los cambios en el archivo
+	--hard       elimina los cambios en el archivo
+```
 
-	git reset --soft HEAD~1  -> se retrocede en 1 los commits que se realizaron
+`UNA RAMA (BRANCH) ES UNA LINEA INDEPENDIENTE DE DESARROLLO EN EL REPOSITORIO`
+* Crear una rama (tenemos que tener en cuenta en que rama estamos ya que se creara otra rama a partir de esta)
+```hs
+git branch version_rama  -> se le asigna el nombre de la rama
+```
 
-
-		--soft       mantiene los cambios en el archivo
-		--hard       elimina los cambios en el archivo
-
-
-
-
-UNA RAMA (BRANCH) ES UNA LINEA INDEPENDIENTE DE DESARROLLO EN EL REPOSITORIO
-
-
-crear una rama (tenemos que tener en cuenta en que rama estamos ya que se creara otra rama a partir de esta)
-
-	git branch version_rama  -> se le asigna el nombre de la rama
-
-visualizar la rama actual y las disponibles
-
+* Visualizar la rama actual y las disponibles
+```hs
 	git branch
+```
 
-cambiar de rama
+* Cambiar de rama
+```hs
+git checkout vesion_rama  -> se cambiara de rama a version_rama
+```
 
-	git checkout vesion_rama  -> se cambiara de rama a version_rama
+* Crear rama y cambiar de rama (tenemos que tener en cuenta en que rama estamos ya que se creara otra rama a partir de esta)
+```hs
+git checkout -b version-python
+```
 
-crear rama y cambiar de rama (tenemos que tener en cuenta en que rama estamos ya que se creara otra rama a partir de esta)
-
-	git checkout -b version-python
-
-cambiar el nombre de una rama (se cambiara el nombre de la rama actual)
-
-	git branch -m version-py
+* Cambiar el nombre de una rama (se cambiara el nombre de la rama actual)
+```hs
+git branch -m version-py
+```
 	
-cambiar el nombre de otra rama
-
-	git branch -m version-py version-python  -> primero el nombre actual y luego el nombre nuevo
+* Cambiar el nombre de otra rama
+```hs
+git branch -m version-py version-python  -> primero el nombre actual y luego el nombre nuevo
+```
 	
-eliminar una rama (solo en git)
-	
-	git branch -d version-python   
+* Eliminar una rama (solo en git)
+```hs
+git branch -d version-python   
+```	
 
-
+```hs
 fusionar/combinar (MERGE) ramas en git -> nos sirve para a;adirlos a la rama principal
  				       -> se debe estar en la rama que recibira la fusion
+```
 				
 
 fusionar ramas
-
-	git merge rama_prueba    -> se le proporciona el nombre de la rama que se fusionara con la actual
-
-
-	git merge version_js     -> habra un conflicto que se debe solucionar
-
-		git merge --continue    -> realiza el merge luego de arreglar el conflicto
+```hs
+git merge rama_prueba    -> se le proporciona el nombre de la rama que se fusionara con la actual
+git merge version_js     -> habra un conflicto que se debe solucionar
+git merge --continue    -> realiza el merge luego de arreglar el conflicto
+```
 
 
 
 
 
-
-
+---
 
 
 # GITHUB
