@@ -66,4 +66,4 @@ de igual forma podemos desestructurar los atributos de la funcion mediante las l
 ```
 
 
-Debemos tener en cuenta que cuando pulsamos un enter se actualiza la pagina por lo cual
+Debemos tener en cuenta que cuando pulsamos un enter(submit) se actualiza la pagina por lo cual es necesario usar un preventDefault para que esto no suceda
