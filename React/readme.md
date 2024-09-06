@@ -65,5 +65,105 @@ de igual forma podemos desestructurar los atributos de la funcion mediante las l
     }
 ```
 
-
 Debemos tener en cuenta que cuando pulsamos un enter(submit) se actualiza la pagina por lo cual es necesario usar un preventDefault para que esto no suceda
+
+# Use effect y Use state
+
+Use state es una funcion que permite manejar el estado en componentes funcionales, nos permite mantener y actualizar datos que pueden cambiar con el tiempo y que afectan la renderizacion del componente.
+
+Use effect es un hook que se ejecuta despues de que el componente se ha renderizado permite manejar efectos secundarios 
+
+para usar useEffect se requiere una Fetchcallback que sera la accion que queremos que se ejecute una sola vez y las dependencias en forma de array, por lo tanto si no se coloca nada las dependencias se tratan del componente como tal
+
+Es mejor usar Async y Await cuando se maneja fetch y APIs ya que en ese caso se necesita que se devuelvan los datos que se le este pidiendo, tambien se podria usar el try catch para manejar los errores que tengamos a la hora de pedir los datos
+
+```hs
+    const [users, setUsers] = useState([])
+
+    const fetchUsers = async() =>{
+        try{
+            const response = await fetch('https://jsonplaceholder.typicode.com/users')
+            const data = await response.json()
+            setUsers(data)
+        }catch(error){
+            console.log(error)
+        }
+    }
+    
+    useEffect(()=>{fetchUsers()},[])
+    
+  return (
+    <>
+        <h1>LIsta de usuarios</h1>
+        <ul>
+        {users.map(user => <li key={user.id}>Nombre: {user.name}</li>)}
+        </ul>
+    </>
+  )
+```
+Si es que nosotros tratasemos de usar el fetchUsers  sin el useEffect se estaran enviando los datos a cada rato, ya usando el fetch users se manejara de diferente forma, esperara una inicializacion o modificacion en el componente para que se ejecute solamente una vez luego de eso.
+
+Sin embargo no es necesario usar el useEffect aplicando unas modificaciones al ejemplo anterior:
+
+
+```hs
+  return (
+    <>
+        <h1>LIsta de usuarios</h1>
+        <ul>
+        {users.map(user => <li key={user.id}>Nombre: {user.name} Email:{user.email}</li>)}
+        </ul>
+
+        <button onClick={handleFetch}>Devolver usuarios</button>
+    </>
+  )
+```
+```hs
+    function handleFetch(){
+        fetchUsers()
+    }
+```
+
+tenemos un boton que llamara cuando se presione a la funcion handleFetch() que esta llamara a fetchUsers() que nos devolvera el resultado de la API
+
+
+# Build y dist
+
+para buildear nuestro proyecto solamente npm run build, nos creara un archivo dist que contendra el html, css y js. El archivo js comprimira? todo lo que hayamos hecho en react
+
+si se compara el proyecto en despliegue con el de desarrollador se puede notar como es que en el dev se llama dos veces debido al strictMode y al estar en produccion solo se llama una vez, asi que ese problema no sera una molestia como tal
+
+al estar en el modo dev al llamar a una api no se mostrara 2 veces sino que solamente una debido a que no se cambia todo el componente como tal sino que solamente se cambia la dependencia que se coloco en el useEffect
+
+
+
+tener en cuenta que no se puede usar async await dentro de useEffect por lo tanto se puede tomar lo que se reciva del fetch dentro del useEffect como si fuera una promesa:
+
+con async y await:
+```hs
+    useEffect( async()=>{
+    const {data, isLoading} = await fetchData(endPoint)
+    },[endPoint])
+```
+con promesas:
+```hs
+    useEffect( ()=>{
+        fetchData(endPoint).then(response => 
+            {setDataApi(response.data),
+            setIsLoading(isLoading.data)})
+    },[endPoint])
+```
+
+En caso de querer usar el async await debemos hacerlo fuera del useEffect para luego llamar a esa funcion dentro del useEffect:
+
+```hs
+    const getFetch = async() =>{
+        const {dataApi,isLoading} = await fetchData(endPoint)
+        setDataApi(dataApi)
+        setIsLoading(isLoading)
+    }
+
+    useEffect( ()=>{
+        getFetch()
+    },[endPoint])
+```
