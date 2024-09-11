@@ -167,3 +167,46 @@ En caso de querer usar el async await debemos hacerlo fuera del useEffect para l
         getFetch()
     },[endPoint])
 ```
+
+
+useRef lo podemos usar como una referencia guardandolo en una variable para luego pasarlo a la parte del html en la que necesitemos, luego en un fetch podemos utilizar esto para darle una instruccion
+
+Por ejemplo puede ser usada cuando se use el scroll en una pagina y de esta manera useRef apunte al ultimo elemento de html de manera que la pagina se vaya cargando mientras se vaya explorando la pagina
+
+
+```hs
+    const focusRef = useRef()
+
+    useEffect(() => {
+      focusRef.current.focus()
+    }, [])
+
+            <div className="form-group">
+                <label htmlFor="exampleInputPassword1">email</label>
+                <input
+                    ref = {focusRef}
+                    type="email"
+                    className="form-control"
+                    name="email"
+                    placeholder="Enter email"
+                    value={email}
+                    onChange={onInputChange}
+                />
+            </div>
+
+```
+
+en el anterior ejemplo simplemente le hacemos un focus en esa parte del dcumento html n este caso el email.
+
+
+
+El useMemo lo podemos usar para que cuando se realicen calculos complejos, no se vuelvan a realizar cada vez que cambie el componente si no es necesario sino que se cambien solo cuando se cambie los datos del calculo o se altere en este mismo 
+
+```hs
+  const getCalculo = numeros => useMemo(() =>{
+    return numeros.reduce((a,b)=> a*b)
+  },[numeros])
+```
+
+en el ejemplo anterior tenemos un array de numeros en el cual si es que se cambia este array se realizara nuevamente el calculo, si no no deberia de realizar nuevamente.
+De igual forma es posible usar este para cuando se este haciendo llamadas APIs para que no se vuelva a llamar a cada rato sino cuando se requiera de este
