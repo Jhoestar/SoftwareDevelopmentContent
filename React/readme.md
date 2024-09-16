@@ -210,3 +210,32 @@ El useMemo lo podemos usar para que cuando se realicen calculos complejos, no se
 
 en el ejemplo anterior tenemos un array de numeros en el cual si es que se cambia este array se realizara nuevamente el calculo, si no no deberia de realizar nuevamente.
 De igual forma es posible usar este para cuando se este haciendo llamadas APIs para que no se vuelva a llamar a cada rato sino cuando se requiera de este
+
+# REDUCER
+
+es una funcion que recibe un estado inicial una accion y devuelve un estado modificado, no puede hacer acciones asincronas y no puede setear en el local storage o sesion storage.
+
+Se necesita iniciar el estado que el reducer usara cuando se inicialice el hook:
+
+```hs
+    const initialState = {
+        count: 0,
+        tasks: []
+    };
+```
+
+se puede usar en el componente de la siguiente manerea
+
+```hs
+    const [state, dispatch] = useReducer(reducer, initialState);
+```
+
+donde:
+    state es el estado actual.
+    dispatch es una función que envía acciones al reducer.
+
+
+
+
+
+
